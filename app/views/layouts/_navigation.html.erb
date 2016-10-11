@@ -61,13 +61,48 @@
      </div>
 </form>
 
- <a href="/users/sign_up">Sign up</a><br />
+ <button onclick="document.getElementById('signup').style.display='block'">Sign up</button><br />
 
  <a href="/users/password/new">Forgot your password?</a><br />
  </div>
 </div>
 
 <!-- /login form -->
+
+<!-- signup form -->
+<div id="signup" class="modal container">
+  <div class="modal-content animate">
+    <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+<form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="pxQt70HXcsh7+1SGfS5pSflGfL9XZ4n6x6GS9NRQNv++jlWIRsz1/G7KqTEz+9uk+rBDikaemjL7h0MVAZcvJg==" />
+
+
+  <div class="field">
+    <label for="user_email">Email</label><br />
+    <input autofocus="autofocus" type="email" value="" name="user[email]" id="user_email" />
+  </div>
+
+  <div class="field">
+    <label for="user_password">Password</label>
+    <em>(6 characters minimum)</em>
+    <br />
+    <input autocomplete="off" type="password" name="user[password]" id="user_password" />
+  </div>
+
+  <div class="field">
+    <label for="user_password_confirmation">Password confirmation</label><br />
+    <input autocomplete="off" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Sign up" data-disable-with="Sign up" />
+  </div>
+</form>
+  <a href="/users/sign_in">Log in</a><br />
+
+</div>
+</div>
+<!-- /signup form -->
 
 <script>
   var modal = document.getElementById('login');
