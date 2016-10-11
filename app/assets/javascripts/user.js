@@ -9,7 +9,7 @@ $(document).ready(function() {
             login.style.display = "none";
         }
         if (event.target == loginBtn) {
-            login.style.display = "none";
+            signup.style.display = "none";
         }
         if (event.target == signupBtn) {
             login.style.display = "none";
