@@ -69,7 +69,7 @@
      </div>
 </form>
 
- <button onclick="document.getElementById('signup').style.display='block'">Sign up</button><br />
+ <button id="signupBtn" onclick="document.getElementById('signup').style.display='block'">Sign up</button><br />
 
  <a href="/users/password/new">Forgot your password?</a><br />
  </div>
@@ -111,13 +111,3 @@
 </div>
 </div>
 <!-- /signup form -->
-
-<script>
-  var modal = document.getElementById('login');
-
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-</script>
