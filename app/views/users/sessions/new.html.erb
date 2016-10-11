@@ -1,5 +1,9 @@
 <h2>Log in</h2>
 
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+<div id="id01" class="modal">
+<div class="container">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -24,3 +28,5 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+</div>
+</div>
