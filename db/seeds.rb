@@ -1,4 +1,4 @@
-counter = 1
+counter = 0
 10.times do
   Category.create(title: Faker::Commerce.department)
   Item.create(
