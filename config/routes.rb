@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :line_items
   resources :orders
+  post 'carts/:id', to: 'carts#checkout', as: 'checkout'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
