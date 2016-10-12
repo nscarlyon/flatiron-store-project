@@ -14,4 +14,11 @@ class LineItemsController < ApplicationController
     current_user.save
     redirect_to cart_path(current_user.current_cart_id)
   end
+
+  def destroy
+    item = Item.find(params[:item_id])
+    current_user.current_cart.delete_item(item.id)
+    current_user.save
+    redirect_to cart_path(current_user.current_cart_id)
+  end
 end

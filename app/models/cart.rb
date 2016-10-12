@@ -31,4 +31,15 @@ class Cart < ApplicationRecord
         line_items.create(item_id: item_id)
     end
   end
+
+  def delete_item(item_id)
+    current_line_item = line_items.find_by(item_id: item_id)
+    current_line_item.quantity -=1
+
+    if current_line_item.quantity <= 0
+      current_line_item.destroy
+    else
+      current_line_item.save
+    end
+  end
 end
