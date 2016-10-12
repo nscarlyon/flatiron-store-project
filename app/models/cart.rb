@@ -28,7 +28,7 @@ class Cart < ApplicationRecord
       current_line_item.save
       current_line_item
     else
-        line_items.build(item_id: item_id)
+        line_items.create(item_id: item_id)
     end
   end
 end
