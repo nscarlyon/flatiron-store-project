@@ -28,7 +28,7 @@
                 <a href="#">Hello, <%= current_user.email %></a>
               </li>
               <li>
-                <a href="/carts/<%=current_user.current_cart_id%>">Your Cart</a>
+                <a href="/carts/<%=current_user.cart.id%>">Your Cart</a>
               </li>
               <li>
                 <%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %>
