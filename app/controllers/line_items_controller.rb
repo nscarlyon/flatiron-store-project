@@ -12,13 +12,13 @@ class LineItemsController < ApplicationController
 
     current_cart.add_item(item.id)
     current_user.save
-    redirect_to cart_path(current_cart_id)
+    redirect_to cart_path(current_cart)
   end
 
   def destroy
     item = Item.find(params[:item_id])
-    current_user.current_cart.delete_item(item.id)
+    current_user.cart.delete_item(item.id)
     current_user.save
-    redirect_to cart_path(current_user.current_cart_id)
+    redirect_to cart_path(current_user.cart)
   end
 end
