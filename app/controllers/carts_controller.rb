@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   def show
-    @current_cart = Cart.find_by(id: current_user.current_cart_id)
+    @current_cart = Cart.find_by(user_id: current_user.id)
   end
 
   def checkout
