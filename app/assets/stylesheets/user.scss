@@ -97,3 +97,19 @@ span.psw {
        width: 100%;
     }
 }
+
+.user-nav {
+  margin: 7.5px, 10px;
+}
+
+.user-nav li {
+  display: inline;
+}
+
+.user-nav button {
+  background: none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
+}
