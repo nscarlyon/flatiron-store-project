@@ -10,7 +10,7 @@ class LineItemsController < ApplicationController
 
     current_user.cart.add_item(item.id)
     current_user.save
-    redirect_to cart_path(current_cart)
+    redirect_to cart_path(current_user.cart)
   end
 
   def destroy
