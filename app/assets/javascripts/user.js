@@ -4,6 +4,10 @@ $(document).ready(function() {
     var signup = document.getElementById('signup');
     var loginBtn = document.getElementById('loginBtn');
 
+    ShowLogin = function() {
+      document.getElementById('login').style.display = "block";
+    }
+
     window.onclick = function() {
         if (event.target == login) {
             login.style.display = "none";
