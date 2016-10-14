@@ -2,11 +2,9 @@ class LineItemsController < ApplicationController
 
   def create
     item = Item.find(params[:item_id])
-    current_cart = Cart.find_by(user_id: params[current_user.id])
 
-    if current_cart.nil?
-      current_cart = Cart.create(user_id: current_user.id)
-      current_user.cart = current_cart
+    if current_user.cart.nil?
+      current_user.cart = Cart.create(user_id: current_user.id)
       current_user.save
     end
 
