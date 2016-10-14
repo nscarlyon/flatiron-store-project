@@ -48,7 +48,12 @@
 </nav>
 
 <!-- login form -->
+<%flash.each do |name, msg|%>
+  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<%end%>
+
 <div id="login" class="modal container">
+
  <div class="modal-content animate">
    <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
    <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4mR3JmnNzuks3LFFva1A1eSIJdW+5mU0w9xHSnlvXXYXp8BxMgIZgH39CCooiYy+kQ7jntKPUq2MBJS10Nl25g==" />
@@ -68,13 +73,11 @@
        </div>
 
      <div class="actions">
-       <input type="submit" name="commit" value="Log in" data-disable-with="Log in" />
+       <input type="submit" id="loginBtn" name="commit" value="Log in" data-disable-with="Log in" />
      </div>
 </form>
 
  <button id="signupBtn" onclick="document.getElementById('signup').style.display='block'">Sign up</button><br />
-
- <a href="/users/password/new">Forgot your password?</a><br />
  </div>
 </div>
 
