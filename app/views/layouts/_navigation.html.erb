@@ -33,11 +33,11 @@
                 <%end%>
               </li>
               <li>
-                <%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %>
+                <%= link_to 'Sign Out', destroy_user_session_path(current_user), method: "delete" %>
               </li>
               <%else%>
                 <li>
-                  <a id="loginLink" href="#" onclick="ShowLogin(); return false;">Log in</a>
+                  <a id="loginLink" href="/sign_in">Log in</a>
                 </li>
               <%end%>
             </ul>
@@ -48,15 +48,15 @@
 </nav>
 
 <!-- login form -->
-<%flash.each do |name, msg|%>
-  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-<%end%>
 
 <div id="login" class="modal container">
 
  <div class="modal-content animate">
+
    <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
-   <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4mR3JmnNzuks3LFFva1A1eSIJdW+5mU0w9xHSnlvXXYXp8BxMgIZgH39CCooiYy+kQ7jntKPUq2MBJS10Nl25g==" />
+   <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post" remote="true" format="json">
+     <input name="utf8" type="hidden" value="&#x2713;" />
+     <input type="hidden" name="authenticity_token" value="4mR3JmnNzuks3LFFva1A1eSIJdW+5mU0w9xHSnlvXXYXp8BxMgIZgH39CCooiYy+kQ7jntKPUq2MBJS10Nl25g==" />
      <div class="field">
        <label for="user_email">Email</label><br />
        <input autofocus="autofocus" type="email" value="" name="user[email]" id="user_email" />

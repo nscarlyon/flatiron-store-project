@@ -14,7 +14,9 @@ $(document).ready(function() {
         }
         if (event.target == loginBtn) {
             signup.style.display = "none";
+            debugger;
         }
+
         if (event.target == signupBtn) {
             login.style.display = "none";
         }
@@ -22,4 +24,5 @@ $(document).ready(function() {
           signup.style.display = "none";
         }
     }
+
 })
