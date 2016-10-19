@@ -26,12 +26,12 @@
                     <div class="ratings">
                         <p class="pull-right">3 reviews</p>
                         <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
+                          <% 3.times do |i| %>
+                            <span class="fa fa-star"></span>
+                          <% end %>
+                          <% (5-3).times do |i| %>
+                            <span class="fa fa-star-o"></span>
+                          <%end%>
                         </p>
                     </div>
                 </div>
