@@ -20,11 +20,8 @@
         </div>
         <!-- /.row -->
 
-        <!-- Page Features -->
-
-      <div class="store-items">
-        <%@items.each_slice(3) do |three_items| %>
-          <div class="row text-center">
+        <%@items.each_slice(4) do |three_items| %>
+          <div class="row text-center" id="store-items">
 
           <%three_items.each do |item| %>
               <div class="col-md-3 col-sm-6">
@@ -43,7 +40,6 @@
           </div>
         <%end%>
       </div>
-
         <hr>
 
         <!-- Footer -->
