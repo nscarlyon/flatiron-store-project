@@ -21,25 +21,28 @@
         <!-- /.row -->
 
         <!-- Page Features -->
-        <div class="row text-center">
 
-        <%@items.each do |item| %>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h2><%= item.title %></h2>
-                        <p><%= number_to_currency(item.price.to_f/100) %> | <%= item.inventory %> in stock</p>
-                        <p>
-                            <%= button_to 'Add to Cart', line_items_path(item_id: item)%><a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-          <%end%>
+      <div class="store-items">
+        <%@items.each_slice(3) do |three_items| %>
+          <div class="row text-center">
 
-        </div>
-        <!-- /.row -->
+          <%three_items.each do |item| %>
+              <div class="col-md-3 col-sm-6">
+                  <div class="thumbnail">
+                      <img src="http://placehold.it/800x500" alt="">
+                      <div class="caption">
+                          <h2><%= item.title %></h2>
+                          <p><%= number_to_currency(item.price.to_f/100) %> | <%= item.inventory %> in stock</p>
+                          <p>
+                              <%= button_to 'Add to Cart', line_items_path(item_id: item)%><a href="#" class="btn btn-default">More Info</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
 
         <hr>
 
