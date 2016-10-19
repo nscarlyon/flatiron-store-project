@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :category
   has_many :line_items
+  has_many :reviews
 
   def self.available_items
     available_items = []
