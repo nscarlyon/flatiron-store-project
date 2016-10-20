@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'reviews/index'
+
+  get 'reviews/show'
+
   devise_for :users, :path=> '', controllers: { sessions: 'users/sessions', :registrations=>'users/registrations'}
   root 'store#index', as: 'store'
   resources :carts
