@@ -36,7 +36,49 @@
                     </div>
                 </div>
 
-            
+                <div class="well">
+                  <%if user_signed_in?%>
+                    <%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <%= current_user.email %> <br>
+
+                      <%= f.text_area :comment %><br>
+                      <%= f.hidden_field :item_id, value: @item.id %>
+                      <%= f.hidden_field :user_id, value: current_user.id %>
+                      <%= f.hidden_field :rating, value: 0 %>
+
+                      <div class="text-right">
+                        <%= f.submit value: 'Leave a Review', class: 'btn btn-success'%>
+                      </div>
+                    <%end%>
+                  <%end%>
+
+                    <hr>
+                  <% @reviews.each do |review| %>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="ratings">
+                            <% review.rating.times do |i| %>
+                              <span class="fa fa-star"></span>
+                            <% end %>
+                            <% (5-review.rating).times do |i| %>
+                              <span class="fa fa-star-o"></span>
+                            <%end%>
+                            <%= User.find_by(id: review.user_id).email %>
+                        </div>
+                        <p><%= review.comment %></p>
+                        <%if review.user_id == current_user.id %>
+                          <button class="btn btn-info">Edit Review</button>
+                          <%=link_to 'Delete Review', item_review_path(review.item_id, review.id), class: 'btn btn-danger', method: "delete" %>
+                        <%end%>
+                      </div>
+                    </div>
+                    <hr>
+                  <%end%>
 
                 </div>
 
