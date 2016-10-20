@@ -12,4 +12,12 @@ class Item < ApplicationRecord
     end
     available_items
   end
+
+  def count_reviews
+    self.reviews_count = self.reviews.length
+  end
+
+  def calculate_average
+    self.reviews.inject{|sum, el| sum.rating + el.rating}.to_f / self.reviews.size
+  end
 end
