@@ -39,17 +39,17 @@
                 <div class="well">
                   <%if user_signed_in?%>
                     <%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
-                      <span class="fa fa-star-o" onclick="toggleStar()" value="0"></span>
-                      <span class="fa fa-star-o" onclick="toggleStar()" value="0"></span>
-                      <span class="fa fa-star-o" onclick="toggleStar()" value="0"></span>
-                      <span class="fa fa-star-o" onclick="toggleStar()" value="0"></span>
-                      <span class="fa fa-star-o" onclick="toggleStar()" value="0"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                      <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
                       <%= current_user.email %> <br>
 
                       <%= f.text_area :comment %><br>
                       <%= f.hidden_field :item_id, value: @item.id %>
                       <%= f.hidden_field :user_id, value: current_user.id %>
-                      <%= f.hidden_field :rating, value: 1 %>
+                      <%= f.hidden_field :rating, value: 0 %>
 
                       <div class="text-right">
                         <%= f.submit value: 'Leave a Review', class: 'btn btn-success'%>
