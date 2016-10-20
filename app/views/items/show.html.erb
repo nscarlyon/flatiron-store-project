@@ -73,7 +73,7 @@
                         <p><%= review.comment %></p>
                         <%if review.user_id == current_user.id %>
                           <button class="btn btn-info">Edit Review</button>
-                          <button class="btn btn-danger" href="items/<%=@item.id%>/reviews/<%=review.id%>" action="delete">Delete Review</button>
+                          <%=link_to 'Delete Review', item_review_path(review.item_id, review.id), class: 'btn btn-danger', method: "delete" %>
                         <%end%>
                       </div>
                     </div>
