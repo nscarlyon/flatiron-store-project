@@ -71,9 +71,13 @@
                             <%= User.find_by(id: review.user_id).email %>
                         </div>
                         <p><%= review.comment %></p>
+                        <%if review.user_id == current_user.id %>
+                          <button class="btn btn-info">Edit Review</button>
+                          <button class="btn btn-danger" href="items/<%=@item.id%>/reviews/<%=review.id%>" action="delete">Delete Review</button>
+                        <%end%>
                       </div>
                     </div>
-                    <h4>
+                    <hr>
                   <%end%>
 
                 </div>
