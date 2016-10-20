@@ -31,7 +31,7 @@
                           <h2><%= item.title %></h2>
                           <p><%= number_to_currency(item.price.to_f/100) %> | <%= item.inventory %> in stock</p>
                           <p>
-                              <%= button_to 'Add to Cart', line_items_path(item_id: item)%><a href="#" class="btn btn-default">More Info</a>
+                              <%= button_to 'Add to Cart', line_items_path(item_id: item)%><a href="/items/<%=item.id%>" class="btn btn-default">More Info</a>
                           </p>
                       </div>
                   </div>
