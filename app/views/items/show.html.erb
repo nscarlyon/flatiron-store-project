@@ -12,7 +12,73 @@
 
             <div class="col-md-9">
 
-                <%= @item.title %>
+              <div class="thumbnail">
+                  <img class="img-responsive" src="https://placehold.it/800x300" alt="">
+                  <div class="caption-full">
+                      <h4 align="center"><%= @item.title %> | <%= number_to_currency(@item.price.to_f/100) %> | <%= @item.inventory %> in stock</h4>
+
+                      <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                      <p>Want to make these reviews work? Check out
+                          <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this building a review system tutorial</a>
+                          </strong>over at maxoffsky.com!</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                  </div>
+                  <div class="ratings">
+                      <p class="pull-right"><%= @item.count_reviews %> Reviews</p>
+                      <p>
+                        <% @item.calculate_average.round.times do |i| %>
+                          <span class="fa fa-star"></span>
+                        <% end %>
+                        <% (5-@item.calculate_average.round).times do |i| %>
+                          <span class="fa fa-star-o"></span>
+                        <%end%>
+                      </p>
+                  </div>
+              </div>
+
+              <div class="well">
+                <%if user_signed_in?%>
+                  <%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
+                    <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                    <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                    <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                    <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                    <span class="fa fa-star-o" onclick="toggleStar(event)"></span>
+                    <%= current_user.email %> <br>
+
+                    <%= f.text_area :comment %><br>
+                    <%= f.hidden_field :item_id, value: @item.id %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :rating, value: 0 %>
+
+                    <div class="text-right">
+                      <%= f.submit value: 'Leave a Review', class: 'btn btn-success'%>
+                    </div>
+                  <%end%>
+                <%end%>
+
+                  <hr>
+                <% @reviews.each do |review| %>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="ratings">
+                          <% review.rating.times do |i| %>
+                            <span class="fa fa-star"></span>
+                          <% end %>
+                          <% (5-review.rating).times do |i| %>
+                            <span class="fa fa-star-o"></span>
+                          <%end%>
+                          <%= User.find_by(id: review.user_id).email %>
+                      </div>
+                      <p><%= review.comment %></p>
+                      <%if review.user_id == current_user.id %>
+                        <button class="btn btn-info">Edit Review</button>
+                        <%=link_to 'Delete Review', item_review_path(review.item_id, review.id), class: 'btn btn-danger', method: "delete" %>
+                      <%end%>
+                    </div>
+                  </div>
+                  <hr>
+                <%end%>
 
                 </div>
 
