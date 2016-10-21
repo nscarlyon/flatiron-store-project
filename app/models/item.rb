@@ -18,8 +18,10 @@ class Item < ApplicationRecord
   end
 
   def calculate_average
-    if self.reviews.size > 0
+    if self.reviews.size > 1
       self.reviews.inject{|sum, el| sum.rating + el.rating}.to_f / self.reviews.size
+    elsif self.reviews.size == 1
+      return self.reviews.first.rating
     else
       return 0
     end
